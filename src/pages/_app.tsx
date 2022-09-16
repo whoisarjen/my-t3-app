@@ -1,4 +1,5 @@
 // src/pages/_app.tsx
+import Layout from "@/containers/Layout";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { withTRPC } from "@trpc/next";
@@ -14,7 +15,7 @@ const MyApp: AppType = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Layout Component={Component} {...pageProps} />
     </SessionProvider>
   );
 };
