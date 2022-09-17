@@ -22,7 +22,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
         context.res,
         authOptions
     )
-
+console.log('getServerSideProps', session)
     return {
         props: {
             session,
