@@ -88,10 +88,10 @@ export const authOptions: NextAuthOptions = {
       // Access token has expired, try to update it
       return refreshAccessToken(token)
     },
-    async session({ session, token }) {
+    async session({ session }) {
       // session.user = token?.user
-      session.accessToken = token?.accessToken
-      session.error = token?.error
+      // session.accessToken = token?.accessToken
+      // session.error = token?.error
 
       return session
     },
