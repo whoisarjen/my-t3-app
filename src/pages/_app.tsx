@@ -1,5 +1,4 @@
 // src/pages/_app.tsx
-import Navbar from "@/components/Navbar";
 import { httpBatchLink } from "@trpc/client/links/httpBatchLink";
 import { loggerLink } from "@trpc/client/links/loggerLink";
 import { withTRPC } from "@trpc/next";
@@ -15,7 +14,6 @@ const MyApp: AppType = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Navbar />
       <Component {...pageProps} />
     </SessionProvider>
   );
@@ -68,5 +66,5 @@ export default withTRPC<AppRouter>({
   /**
    * @link https://trpc.io/docs/ssr
    */
-  ssr: false,
+  ssr: true,
 })(MyApp);

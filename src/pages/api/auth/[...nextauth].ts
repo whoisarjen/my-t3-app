@@ -12,12 +12,6 @@ const GOOGLE_AUTHORIZATION_URL =
     response_type: "code",
   })
 
-/**
- * Takes a token, and returns a new token with updated
- * `accessToken` and `accessTokenExpires`. If an error occurs,
- * returns the old token and an error property
- */
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function refreshAccessToken(token: any) {
   try {
@@ -81,7 +75,7 @@ export const authOptions: NextAuthOptions = {
       }
 
       // Return previous token if the access token has not expired yet
-      if (token?.accessTokenExpires && (Date.now() < token.accessTokenExpires)) {
+      if (Date.now() < (token?.accessTokenExpires as number || 0)) {
         return token
       }
 
@@ -89,10 +83,6 @@ export const authOptions: NextAuthOptions = {
       return refreshAccessToken(token)
     },
     async session({ session }) {
-      // session.user = token?.user
-      // session.accessToken = token?.accessToken
-      // session.error = token?.error
-
       return session
     },
   },
